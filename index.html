@@ -28,9 +28,39 @@
                     <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>  
-            </div>                
+            </div>
+            <i class="navbar-text">
+                <a href="" data-toggle="modal" data-target="#loginmodal">
+                    <i class="fa fa-sign-in"> Login</i>
+                </a>
+            </i>              
         </div> 
     </nav>
+
+    <div class="modal" role="dialog" id="loginmodal" class="col-12">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+                    <button type="modal" class="close" data-dismiss="modal">&times;</button>
+            </div>        
+                <div class="modal-body align-self-center justify-content-center justify-items-center col-12 col-sm-6 offset-3" >
+                    <form class="form">
+                        <div class="row">
+                            <label for="username" class="col-sm-2">User Name: </label>
+                            <input type="text" name="username" class="form-control col-6" placeholder="User Name">
+                        </div>
+                        <div class="row">
+                            <label for="password" class="form-label col-sm-2">Password: </label>
+                            <input type="password" name="password" class="form-control col-6" placeholder="Password">
+                        </div>
+                        <div class="row mt-3">
+                            <button type="submit" role="button" class="btn btn-info mr-3 offset-2">Submit</button>
+                            <button type="button" role="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+                        </div>
+                </div>
+            </div>
+    </div>
+
     <header class="jumbotron">
         <div class="container">  <!-- container 1 -->
             <div class="row row-header">
@@ -42,7 +72,7 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm align-self-center">
-                    <a class="btn btn-block bg-warning align-self-center" role="button" href="#reservation"><strong>Reserve Table</strong></a>
+                    <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="tooltip" data-html="true"; title="Or call us at </br> +2348167693887" data-placement="right" href="#reservation"><strong>Reserve Table</strong></a>
                 </div>
             </div>
         </div>
@@ -166,7 +196,7 @@
            </div>
            <div class="row justify-content-center">  <!-- row 2 -->           
                 <div class="col-auto">
-                    <p>© Copyright 2020 Ristorante Con Fusion</p>
+                    <p>© Copyright 2018 Ristorante Con Fusion</p>
                 </div>
            </div>
         </div>
@@ -175,6 +205,11 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </body>
 
 </html>
