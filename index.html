@@ -29,20 +29,20 @@
                     <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>  
             </div>
-            <i class="navbar-text">
-                <a href="" data-toggle="modal" data-target="#loginmodal">
+            <i class="navbar-text" id="loginicon">
+                <button class="btn text-white">
                     <i class="fa fa-sign-in"> Login</i>
-                </a>
+                </button>
             </i>              
         </div> 
     </nav>
 
-    <div class="modal" role="dialog" id="reservationmodal">
+    <div class="modal fade" role="dialog" id="reservationmodal">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Reserve a Table</h4>
-                    <button type="button" class="btn btn-danger btn-sm " data-dismiss="modal">&times;</button>
+                    <button type="button" class="btn btn-lg closemodal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -70,9 +70,9 @@
                             <input class="col-8 col-sm-3 mr-auto form-control" type="text" name="time" placeholder="Time">
                         </div>
 
-                       <div class="row  mt-3">
+                       <div class="row mt-3">
                             <button class="offset-4 btn bg-primary text-white">Reserve</button>
-                            <button class="ml-2 btn bg-secondary text-white" data-target="#reservationmodal" data-dismiss="modal">Cancle</button>
+                            <button class="ml-2 btn bg-secondary text-white closemodal">Cancle</button>
                        </div>
 
                     </form>
@@ -81,26 +81,23 @@
         </div>
     </div>
 
-        <div class="modal" role="dialog" id="loginmodal">
+        <div class="modal fade" role="dialog" id="loginmodal">
             <div class="modal-dialog modal-lg " role="content">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Login</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>        
-                    <div class="modal-body align-self-center justify-content-center justify-items-center col-12 col-sm-8 offset-2" >
-                        <form class="form" method="GET">
-                            <div class="row">
-                                <label for="username" class="col-sm-3">User Name: </label>
-                                <input type="text" name="username" class="form-control col-6" placeholder="User Name">
+                            <button type="button" class="btn btn-lg closemodal">&times;</button>
+                    </div>  
+                    <div class="modal-body">      
+                        <form class="form">
+                            <div class="form-group row">
+                                <input type="text" name="username" class="form-control col-12 col-md-4 ml-3" placeholder="Enter email">
+                                <input type="password" name="password" class="form-control col-12 col-md-4 ml-2" placeholder="Password">
+                                <input type="checkbox" name="contactyou" class="col-auto ml-1"><label for="contactyou"><strong class="col-12 col-md-3">Remember me</strong></label>
                             </div>
-                            <div class="row">
-                                <label for="password" class="form-label col-sm-3">Password: </label>
-                                <input type="password" name="password" class="form-control col-6" placeholder="Password">
-                            </div>
-                            <div class="row mt-3">
-                                <button type="submit" role="button" class="btn btn-info mr-3 offset-2">Submit</button>
-                                <button type="button" role="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+                            <div class="form-group row mt-6">
+                                <button type="submit" role="button" class="btn btn-info mr-3 offset-9">Submit</button>
+                                <button type="button" role="button" class="btn btn-secondary text-white closemodal">Cancle</button>
                             </div>
                         </form>
                     </div>
@@ -119,7 +116,7 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm align-self-center">
-                    <a href="" class="btn btn-block nav-link btn-warning text-white" data-toggle="modal" data-target="#reservationmodal"><strong>Reserve Table</strong></a>
+                    <button class="btn btn-block nav-link btn-warning text-white" id="reservetable"><strong>Reserve Table</strong></button>
                 </div>
             </div>
         </div>
@@ -163,9 +160,11 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
-                     <button class="btn btn-danger btn-sm" id="carouselButton">
-                        <span id="carousel-button-icon" class="fa fa-pause"></span>
-                    </button>                       
+                    <div class="btn-group" id="carouselBtn-group">
+                        <button class="btn btn-danger btn-sm" id="carouselButton">
+                            <span id="carousel-button-icon" class="fa fa-pause"></span>
+                        </button>
+                    </div>                      
                 </div>
             </div>
         </div>
@@ -262,18 +261,13 @@
         </div>
     </footer>
       <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
-      <script src="node_modules/jquery/dist/core.js"></script>
-      <script src="node_modules/jquery/dist/jquery.js"></script>
-      <script src="node_modules/jquery/dist/jquery.min.js"></script>
-      <script src="node_modules/jquery/dist/jquery.slim.js"></script>
-
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#mycarousel").carousel( { interval: 1000 } );
+            $("#mycarousel").carousel( { interval: 2000 } );
             $("#carouselButton").click(function(){
                 if ($("#carouselButton").children("span").hasClass('fa-pause')) {
                     $("#mycarousel").carousel('pause');
@@ -286,6 +280,17 @@
                     $("#carouselButton").children("span").addClass('fa-pause');                    
                 }
             });
+            $("#loginicon").click(function(){
+              $("#loginmodal").modal();
+            });
+            $("#reservetable").click(function(){
+              $("#reservationmodal").modal();
+            });
+            $('.closemodal').click(function(){
+                $('#loginmodal').modal('hide');
+                $('#reservationmodal').modal('hide');
+            });
+            
         });
     </script>
 </html>
